@@ -23,5 +23,5 @@ That's basically it. Your philosophers have to do the following things (in order
 
 Check how threads work and how you can use mutexes to lock / unlock some values. Once you understood that, you "just" have to make each philosopher eat, sleep and think in a loop. Don't forget to print the logs when the state of your philosophers change.
 
-
+ex : ./philo 5 800 200 200 7
 

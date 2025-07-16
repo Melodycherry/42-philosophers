@@ -6,20 +6,92 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:53:55 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/15 16:46:04 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/16 15:43:56 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// check que input est only number 
-// they should all be bigger than 0 except the number of meals each philo needs to eat (edge case)
-// should not test with more than 200 philos so you can set the limit not to be more than 200
+// valid input ( avec tt dedans ) faire un bool ? 
+// - only digit
+// - bigger than zero pour av 1 - 2 - 3 - 4
+// - 0 ou plus pour av 5 ( optional) 
+// - av 2 <= 200 ( max limit de philo ) 
 
-// valid input 
+t_bool	is_valid_int(char *str)
+{
+	int i;
 
-// the number of philosophers must be one or more
+	i = 0;
+	if (str[0] == '-') // juste pour le atoi et les mess erreurs plus precis
+		i++;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return FALSE;
+		i++;
+	}
+	return TRUE;
+}
 
-// the eating time must be greater than zero
+t_bool is_valid_input(char **av)
+{
+	int i;
 
-// atoi pour convertir av et mettre info dasn la struct ??
+	i = 1;
+	if ((easy_atoi(av[1])) > 200) // pour les philo
+	{
+		printf("MAX number of philo is 200\n");
+		return FALSE;
+	}
+	while (av[i])
+	{
+		if (is_valid_int(av[i]) == FALSE)
+		{
+			printf("Must be a number\n");
+			return FALSE;
+		}
+		if ( i == 5) // seulement pour le nombre de meal
+		{
+			if (easy_atoi(av[i]) < 0)
+			{
+				printf("Number of meal nust be 0 or more\n");
+				return FALSE;
+			}
+		}
+		else // tt le reste doit etre positif 
+		{
+			if (easy_atoi(av[i]) <= 0)
+			{
+				printf("Number must be positive\n");
+				return FALSE;
+			}
+		}
+		i++;
+	}
+	return TRUE;	
+}
+
+int	easy_atoi(const char *str)
+{
+	int	i;
+	int	result;
+	int signe;
+
+	i = 0;
+	signe = 1;
+	result = 0;
+	if (str[i] == '-')
+	{
+		signe = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (signe * result);
+}
