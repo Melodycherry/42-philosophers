@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:53:55 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/16 15:43:56 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 13:39:01 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,20 @@ t_bool is_valid_input(char **av)
 
 	i = 1;
 	if ((easy_atoi(av[1])) > 200) // pour les philo
-	{
-		printf("MAX number of philo is 200\n");
-		return FALSE;
-	}
+		return (printf("MAX number of philo is 200\n"), FALSE);
 	while (av[i])
 	{
 		if (is_valid_int(av[i]) == FALSE)
-		{
-			printf("Must be a number\n");
-			return FALSE;
-		}
+			return (printf("Must be a number\n"), FALSE);
 		if ( i == 5) // seulement pour le nombre de meal
 		{
 			if (easy_atoi(av[i]) < 0)
-			{
-				printf("Number of meal nust be 0 or more\n");
-				return FALSE;
-			}
+				return (printf("Number of meal nust be 0 or more\n"), FALSE);
 		}
 		else // tt le reste doit etre positif 
 		{
 			if (easy_atoi(av[i]) <= 0)
-			{
-				printf("Number must be positive\n");
-				return FALSE;
-			}
+				return (printf("Number must be positive\n"), FALSE);
 		}
 		i++;
 	}

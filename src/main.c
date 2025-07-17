@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 12:30:31 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 13:50:13 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int main(int ac, char **av)
 	if (!is_valid_input(av))
 		return(1);
 	init_all(&philo);
-	fill_struct(&philo, av);
-	// verif si ca fonctionne correctement
-	printf("%d\n", philo.num_philo);
-	printf("%d\n", philo.time_to_die);
+	fill_struct(&philo, ac, av);
 	
 	// philo start eating and doing stuff 
 
