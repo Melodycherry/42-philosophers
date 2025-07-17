@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/16 15:43:06 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 12:28:01 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ typedef enum e_bool
 } t_bool;
 
 // FONCTIONS
+
 // Parsing
 t_bool	is_valid_int(char *str);
 t_bool 	is_valid_input(char **av);
 int		easy_atoi(const char *str);
+// init
+void	init_all(t_philo *philo );
+void	fill_struct(t_philo *philo, char **av);
 
 #endif 

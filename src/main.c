@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/16 15:38:55 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 12:30:31 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int main(int ac, char **av)
 {
+	t_philo	philo;
+	
 	if (ac < 5 || ac > 6)
 	{
 		printf("Need 'Philo - Time to die - Time to eat - Time to sleep'\n ");
@@ -22,10 +24,13 @@ int main(int ac, char **av)
 	}
 	if (!is_valid_input(av))
 		return(1);
+	init_all(&philo);
+	fill_struct(&philo, av);
+	// verif si ca fonctionne correctement
+	printf("%d\n", philo.num_philo);
+	printf("%d\n", philo.time_to_die);
 	
-	// init ? 
-	
-	// create simulation
+	// philo start eating and doing stuff 
 
 	// destroy mutex et free ? 
 
