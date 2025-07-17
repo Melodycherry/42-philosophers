@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:53:55 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 13:39:01 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:11:32 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 t_bool	is_valid_int(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[0] == '-') // juste pour le atoi et les mess erreurs plus precis
@@ -28,15 +28,15 @@ t_bool	is_valid_int(char *str)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return FALSE;
+			return (FALSE);
 		i++;
 	}
-	return TRUE;
+	return (TRUE);
 }
 
-t_bool is_valid_input(char **av)
+t_bool	is_valid_input(char **av)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if ((easy_atoi(av[1])) > 200) // pour les philo
@@ -45,7 +45,7 @@ t_bool is_valid_input(char **av)
 	{
 		if (is_valid_int(av[i]) == FALSE)
 			return (printf("Must be a number\n"), FALSE);
-		if ( i == 5) // seulement pour le nombre de meal
+		if (i == 5) // seulement pour le nombre de meal
 		{
 			if (easy_atoi(av[i]) < 0)
 				return (printf("Number of meal nust be 0 or more\n"), FALSE);
@@ -57,14 +57,14 @@ t_bool is_valid_input(char **av)
 		}
 		i++;
 	}
-	return TRUE;	
+	return (TRUE);
 }
 
 int	easy_atoi(const char *str)
 {
 	int	i;
 	int	result;
-	int signe;
+	int	signe;
 
 	i = 0;
 	signe = 1;
