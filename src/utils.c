@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:45:03 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/16 17:52:31 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:51:10 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,7 @@
 
 // check ce qui sera malloc dans le projet
 
+// faire fonction de usleep custom
+
+// faire fonction de print mess 
+// avec le temps, le philo et le message 

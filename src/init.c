@@ -6,13 +6,13 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 16:09:17 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 16:22:46 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	init_data(t_data *data )
+void	init_data(t_data *data ) // renomer en init all si je mets tt dedans. a voir plus tard
 {
 	data->num_philo = 0;
 	data->time_to_die = 0;
@@ -20,6 +20,10 @@ void	init_data(t_data *data )
 	data->time_to_sleep = 0;
 	data->repetition = 0;
 	data->philo = NULL;
+
+	// ajout dedans init fork
+	// et init philo
+	// pour limiter les lignes dans le main et faire just init all
 }
 
 void	init_philos(t_data *data)

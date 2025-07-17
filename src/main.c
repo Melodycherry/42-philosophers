@@ -6,13 +6,13 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 16:10:15 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:06:09 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_data	data;
 
@@ -29,7 +29,10 @@ int main(int ac, char **av)
 	// init fork avant les philo ? 
 	init_philos(&data);
 	
-	// philo start eating and doing stuff 
+	// philo start eating and doing stuff :
+	// creer thread
+	// creer monitoring
+	// join tt les threads 
 
 	// destroy mutex et free ? 
 	// free les fork, free les philo ( les 2 ou il y a malloc ) 
