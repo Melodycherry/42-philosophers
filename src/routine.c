@@ -6,11 +6,34 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 18:03:08 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/20 17:50:01 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+// void	*philo_routine(void *arg)
+// {
+// 	// protection au demarrage ? si nombre est pair
+// 	while (1) // while ( philo not dead ?? )
+// 	{
+// 		// 		eat()
+// 		//		sleep()
+// 		//		think()
+// 	}
+// }
+void	*philo_routine(void *arg) // routine de test
+{
+	t_philo *philo = (t_philo *)arg;
+	// on doit cast a l interieur car fonction pthread est defini avec void arg
+	// routine obligatoirement type void et void *arg
+	printf("Philo %d pense\n", philo->philo_id);
+	usleep(100000); // 0.1s
+	printf("Philo %d mange\n", philo->philo_id);
+	usleep(100000);
+	printf("Philo %d dort\n", philo->philo_id);
+	return (NULL);
+}
 
 // ---------------------------------------------------------------------------------------------------
 // eat()
@@ -45,14 +68,6 @@
 // print "thinkin"
 
 // ---------------------------------------------------------------------------------------------------
-// void philo_routine()
-// protection au demarrage ? si nombre est pair
-// DONC while (1) pour tester ou while ( philo not dead ?? )
-// { 
-// 		eat()
-//		sleep()
-//		think()
-// }
 
 // void eat(philo)
 // mutex left fork

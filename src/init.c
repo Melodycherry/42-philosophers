@@ -6,13 +6,13 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 16:22:46 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/20 17:55:03 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	init_data(t_data *data ) // renomer en init all si je mets tt dedans. a voir plus tard
+void	init_data(t_data *data )
 {
 	data->num_philo = 0;
 	data->time_to_die = 0;
@@ -20,10 +20,6 @@ void	init_data(t_data *data ) // renomer en init all si je mets tt dedans. a voi
 	data->time_to_sleep = 0;
 	data->repetition = 0;
 	data->philo = NULL;
-
-	// ajout dedans init fork
-	// et init philo
-	// pour limiter les lignes dans le main et faire just init all
 }
 
 void	init_philos(t_data *data)
@@ -40,9 +36,6 @@ void	init_philos(t_data *data)
 		data->philo[i].left_fork = NULL;
 		data->philo[i].right_fork = NULL;
 		data->philo[i].data = data;
-		// gerer ce truc de fourchette pour chaque philo
-		// fourchette gauche ?
-		// fourchette droite ?
 		i++;
 	}
 }
@@ -62,11 +55,41 @@ void	fill_struct(t_data *data, int ac, char **av)
 		return ;// check si exit ou free ou autre 
 	}	
 }
-// init mutex separement ? check comment ca marche 
 
 void	init_forks(t_data *data)
 {
-	(void)data;
-	// faire initialisation des fourchettes 
-	// check comment ca marche 
+	int i;
+
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philo);
+	if (!data->forks)
+	{
+		printf("erreur malloc forks\n");
+		return ;
+	}
+	i = 0;
+	while ( i < data->num_philo) // init les mutex 
+	{
+		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+		{
+			printf("erreur init mutex\n");
+			// faire destroy de ce qui a deja ete creer ? 
+			return  ;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < data->num_philo) // pour assigner les forks aux philo
+	{
+		data->philo[i].left_fork = &data->forks[i];
+		data->philo[i].right_fork = &data->forks[(i + 1) % data->num_philo];
+		i++;
+	}
+}
+
+void init_all(t_data *data, int ac, char **av)
+{
+	init_data(data);
+	fill_struct(data, ac, av);
+	init_forks(data);
+	init_philos(data);
 }

@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 18:06:09 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/20 17:54:42 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ int	main(int ac, char **av)
 	}
 	if (!is_valid_input(av))
 		return (1);
-	init_data(&data);
-	fill_struct(&data, ac, av);
-	// init fork avant les philo ? 
-	init_philos(&data);
-	
+	init_all(&data, ac, av);
+
 	// philo start eating and doing stuff :
 	// creer thread
 	// creer monitoring
 	// join tt les threads 
+	
+	if (create_thread(&data) != 0)
+		return (1);
+	join_threads(&data);
 
 	// destroy mutex et free ? 
 	// free les fork, free les philo ( les 2 ou il y a malloc ) 
