@@ -25,6 +25,7 @@ SRC = main.c \
 	routine.c \
 	thread.c \
 	utils.c \
+	time.c \
 	testing.c
 	
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))

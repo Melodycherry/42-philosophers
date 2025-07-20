@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 17:50:44 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/20 22:46:41 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 # include "struct.h"
 
@@ -40,8 +41,14 @@ void	init_forks(t_data *data);
 void	fill_struct(t_data *data, int ac, char **av);
 // routine
 void	*philo_routine(void *arg);
+void	eating(t_philo *philo);
+void	sleeping(t_philo *philo);
+void	thinking(t_philo *philo);
 // thread
 int		create_thread(t_data *data);
 void	join_threads(t_data *data);
+// Time
+long	get_time(void);
+long	current_time(t_data *data);
 
 #endif 

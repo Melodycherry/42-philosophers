@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 17:55:03 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/20 22:40:56 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_data(t_data *data )
 	data->time_to_sleep = 0;
 	data->repetition = 0;
 	data->philo = NULL;
+	data->start_time = get_time();
 }
 
 void	init_philos(t_data *data)

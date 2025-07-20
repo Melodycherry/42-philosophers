@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:20:19 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 17:51:37 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/20 22:06:42 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,11 @@ void	join_threads(t_data *data)
 // and that will break the loop in all of the threads. 
 // The other check is to see if all the philos finished eating the amount of meals they need to
 // and if they did we will again change the dead flag to one and break the threads loop.
+
+// ---------------------------------------------------------------------------------------------------
+
+// MONITOR 
+// va verif si un philo est mort 
+// = n 'a pas mange depuis plus que time to die 
+// 
+// verif si nombre de meal max atteint ( repetition)

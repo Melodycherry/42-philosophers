@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 17:54:42 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/20 22:17:44 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ int	main(int ac, char **av)
 	init_all(&data, ac, av);
 
 	// philo start eating and doing stuff :
-	// creer thread
-	// creer monitoring
-	// join tt les threads 
 	
 	if (create_thread(&data) != 0)
 		return (1);
+	// creer monitoring
 	join_threads(&data);
 
 	// destroy mutex et free ? 
