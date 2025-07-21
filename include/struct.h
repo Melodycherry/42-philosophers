@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:59:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 22:40:32 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:39:48 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@
 
 typedef struct s_data	t_data;
 
-// other struc pour chaque philo 
 typedef struct s_philo
 {
 	int				philo_id;
 	int				meal_num;
-	int				last_meal; // check si int est ok pour ca 
+	int				last_meal;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	t_data			*data;
 }	t_philo;
 
-typedef struct s_data // avec toutes les donnees
+typedef struct s_data
 {
 	int				num_philo;
 	int				time_to_die;
@@ -37,8 +36,11 @@ typedef struct s_data // avec toutes les donnees
 	int				time_to_sleep;
 	int				repetition;
 	long			start_time;
+	int				is_dead;
+	int				are_full;
 	t_philo			*philo;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	mutex_state;
 }	t_data;
 
 #endif

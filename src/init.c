@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 22:40:56 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:20:26 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	init_data(t_data *data )
 	data->repetition = 0;
 	data->philo = NULL;
 	data->start_time = get_time();
+	data->is_dead = 0;
+	data->are_full = 0;
+	pthread_mutex_init(&data->mutex_state, NULL);
 }
 
 void	init_philos(t_data *data)
@@ -91,6 +94,6 @@ void init_all(t_data *data, int ac, char **av)
 {
 	init_data(data);
 	fill_struct(data, ac, av);
-	init_forks(data);
 	init_philos(data);
+	init_forks(data);
 }

@@ -6,24 +6,18 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:53:55 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/17 16:11:32 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:43:48 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// valid input ( avec tt dedans ) faire un bool ? 
-// - only digit
-// - bigger than zero pour av 1 - 2 - 3 - 4
-// - 0 ou plus pour av 5 ( optional) 
-// - av 2 <= 200 ( max limit de philo ) 
-
+ 
 t_bool	is_valid_int(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[0] == '-') // juste pour le atoi et les mess erreurs plus precis
+	if (str[0] == '-')
 		i++;
 	while (str[i])
 	{
@@ -33,7 +27,12 @@ t_bool	is_valid_int(char *str)
 	}
 	return (TRUE);
 }
-
+/** valid input :
+ * - only digit
+ * - bigger than zero pour av 1 - 2 - 3 - 4
+ * - 0 ou plus pour av 5 ( optional) 
+ * - av 2 <= 200 ( max limit de philo ) 
+ */
 t_bool	is_valid_input(char **av)
 {
 	int	i;

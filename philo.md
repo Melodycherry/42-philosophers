@@ -49,3 +49,18 @@ check les fonctions autorisees et faire resumer
 
 — FSanitise: Compile with -fsanitize=thread to detect threading problems while running.
 
+
+PB AVEC LES PRINTF 
+on doit proteger avec un mutex_print
+sinon ca fait n'imp comme maintenant 
+DONC faire une fonction qui va printer les actions avec un mutex print dedans :
+ex :
+void	print_action(t_philo *philo, char *msg)
+{
+	if (game_over(philo))
+		return ;
+	pthread_mutex_lock(&philo->data->mutex_print);
+	printf("%ld %d %s\n", current_time(philo->data), philo->philo_id, msg);
+	pthread_mutex_unlock(&philo->data->mutex_print);
+}
+changer ca partout. Et va reduire les lignes de code aussi donc GOOD 

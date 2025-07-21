@@ -6,16 +6,19 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:20:19 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 22:06:42 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:25:06 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// create the threads and join them
-// create as many threads as philosophers 
-// Each philo thread will run the philo routine function
-
+/**
+ * @brief Create a thread object
+ * create as many threads as philosophers 
+ * Each philo thread will run the philo routine function
+ * @param data 
+ * @return int 
+ */
 int	create_thread(t_data *data)
 {
 	int i;
@@ -44,22 +47,57 @@ void	join_threads(t_data *data)
 		i++;
 	}
 }
-// MONITOR :
-//  2 checks in it that run infinitely until a philo dies 
-// or they all ate the number of meals they need to (last input argument)
-// check that the time a philo needs to die didn’t surpass the last meal he had 
-// and that he is not concurrently eating
+/**
+ * @brief  2 checks that run infinitely until a philo dies
+ * or they all ate the number of meals they need to (last input argument)
+ * check that the time a philo needs to die didn’t surpass the last meal he had 
+ * and that he is not concurrently eating
+ * @param arg 
+ * @return void* 
+ */
+void	*monitoring(void *arg)
+{
+	t_data *data = (t_data *)arg;
+	int i;
+	int full_count;
+	long now;
 
-// dead flag ? 
-// If he indeed died we change the dead flag to 1 
-// and that will break the loop in all of the threads. 
-// The other check is to see if all the philos finished eating the amount of meals they need to
-// and if they did we will again change the dead flag to one and break the threads loop.
+	while (1)
+	{
+		i = 0;
+		full_count = 0;
+		while (i < data->num_philo) // verif de la mort
+		{
+			now = get_time();
+			if ((now - data->philo[i].last_meal) > data->time_to_die)
+			{
+				pthread_mutex_lock(&data->mutex_state); // protection pour eviter race condition 
+				data->is_dead = 1;
+				pthread_mutex_unlock(&data->mutex_state);
+				printf("%ld %d died\n", current_time(data), data->philo[i].philo_id);
+				return (NULL);
+			}
+			if (data->repetition > 0 && data->philo[i].meal_num >= data->repetition)
+				full_count++;
+			i++;
+		}
+		if (data->repetition > 0 && full_count == data->num_philo) // si tout le monde a mange le nombre de repet
+		{
+			pthread_mutex_lock(&data->mutex_state);
+			data->are_full = 1; // flag
+			pthread_mutex_unlock(&data->mutex_state);
+			return (NULL);
+		}
+		usleep(1000); // micro sommeil pour la surveillance
+	}
+}
 
-// ---------------------------------------------------------------------------------------------------
+int	game_over(t_philo *philo)
+{
+	int	end;
 
-// MONITOR 
-// va verif si un philo est mort 
-// = n 'a pas mange depuis plus que time to die 
-// 
-// verif si nombre de meal max atteint ( repetition)
+	pthread_mutex_lock(&philo->data->mutex_state);
+	end = (philo->data->is_dead || philo->data->are_full);
+	pthread_mutex_unlock(&philo->data->mutex_state);
+	return (end);
+}

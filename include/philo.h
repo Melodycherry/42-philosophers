@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/20 22:46:41 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:26:42 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void	thinking(t_philo *philo);
 // thread
 int		create_thread(t_data *data);
 void	join_threads(t_data *data);
+void	*monitoring(void *arg);
+int		game_over(t_philo *philo);
 // Time
 long	get_time(void);
 long	current_time(t_data *data);
+void	ft_usleep(t_philo *philo, long duration);
 
 #endif 
