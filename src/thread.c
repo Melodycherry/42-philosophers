@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:20:19 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/21 16:25:06 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/22 13:02:39 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	*monitoring(void *arg)
 				pthread_mutex_lock(&data->mutex_state); // protection pour eviter race condition 
 				data->is_dead = 1;
 				pthread_mutex_unlock(&data->mutex_state);
-				printf("%ld %d died\n", current_time(data), data->philo[i].philo_id);
+				print_action(&data->philo[i], " died");
 				return (NULL);
 			}
 			if (data->repetition > 0 && data->philo[i].meal_num >= data->repetition)

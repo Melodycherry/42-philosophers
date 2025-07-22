@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/21 15:20:26 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:03:55 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	init_data(t_data *data )
 	data->time_to_sleep = 0;
 	data->repetition = 0;
 	data->philo = NULL;
-	data->start_time = get_time();
 	data->is_dead = 0;
 	data->are_full = 0;
+	//data->start_time = get_time();
 	pthread_mutex_init(&data->mutex_state, NULL);
+	pthread_mutex_init(&data->mutex_print, NULL);
 }
 
 void	init_philos(t_data *data)
@@ -35,10 +36,10 @@ void	init_philos(t_data *data)
 	{
 		data->philo[i].philo_id = i + 1;
 		data->philo[i].meal_num = 0;
-		data->philo[i].last_meal = 0;
+		data->philo[i].last_meal = data->start_time;
 		data->philo[i].thread = 0;
-		data->philo[i].left_fork = NULL;
-		data->philo[i].right_fork = NULL;
+		//data->philo[i].left_fork = NULL;
+		//data->philo[i].right_fork = NULL;
 		data->philo[i].data = data;
 		i++;
 	}
@@ -60,32 +61,82 @@ void	fill_struct(t_data *data, int ac, char **av)
 	}	
 }
 
-void	init_forks(t_data *data)
+// void	init_forks(t_data *data)
+// {
+// 	int i;
+
+// 	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philo);
+// 	if (!data->forks)
+// 	{
+// 		printf("erreur malloc forks\n");
+// 		return ;
+// 	}
+// 	i = 0;
+// 	while ( i < data->num_philo) // init les mutex 
+// 	{
+// 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+// 		{
+// 			printf("erreur init mutex\n");
+// 			// faire destroy de ce qui a deja ete creer ? 
+// 			return  ;
+// 		}
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (i < data->num_philo) // pour assigner les forks aux philo
+// 	{
+// 		// data->philo[i].left_fork = &data->forks[i];
+// 		// data->philo[i].right_fork = &data->forks[(i + 1) % data->num_philo];
+// 		// i++;
+// 		if (i % 2 == 0)
+// 		{
+// 			data->philo[i].left_fork = &data->forks[i];
+// 			data->philo[i].right_fork = &data->forks[(i + 1) % data->num_philo];
+// 		}
+// 		else
+// 		{
+// 			data->philo[i].left_fork = &data->forks[(i + 1) % data->num_philo];
+// 			data->philo[i].right_fork = &data->forks[i];
+// 		}
+// 		i++;
+// 	}
+// }
+
+void	init_forks(t_data *data) // tentative 2
 {
 	int i;
 
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philo);
 	if (!data->forks)
 	{
-		printf("erreur malloc forks\n");
+		printf("Erreur malloc forks\n");
 		return ;
 	}
 	i = 0;
-	while ( i < data->num_philo) // init les mutex 
+	while (i < data->num_philo)
 	{
 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
 		{
-			printf("erreur init mutex\n");
-			// faire destroy de ce qui a deja ete creer ? 
-			return  ;
+			printf("Erreur init mutex fork %d\n", i);
+			// BONUS : ici tu pourrais faire un destroy de ceux déjà créés
+			return ;
 		}
 		i++;
 	}
+	// Attribution des fourchettes à chaque philosophe
 	i = 0;
-	while (i < data->num_philo) // pour assigner les forks aux philo
+	while (i < data->num_philo)
 	{
-		data->philo[i].left_fork = &data->forks[i];
-		data->philo[i].right_fork = &data->forks[(i + 1) % data->num_philo];
+		if (i % 2 == 0)
+		{
+			data->philo[i].left_fork = &data->forks[i];
+			data->philo[i].right_fork = &data->forks[(i + 1) % data->num_philo];
+		}
+		else
+		{
+			data->philo[i].left_fork = &data->forks[(i + 1) % data->num_philo];
+			data->philo[i].right_fork = &data->forks[i];
+		}
 		i++;
 	}
 }
@@ -94,6 +145,6 @@ void init_all(t_data *data, int ac, char **av)
 {
 	init_data(data);
 	fill_struct(data, ac, av);
-	init_philos(data);
 	init_forks(data);
+	init_philos(data);
 }

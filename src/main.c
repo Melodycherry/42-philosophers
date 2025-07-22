@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/21 15:29:29 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:08:25 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int ac, char **av)
 	init_all(&data, ac, av);
 
 	// philo start eating and doing stuff :
+	data.start_time = get_time(); // deplace ici ??
+	printf("Start time: %ld\n", data.start_time); // print debug 
 	if (create_thread(&data) != 0)
 	{
 		// free data philo

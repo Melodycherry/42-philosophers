@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/21 16:26:42 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:43:37 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ int		game_over(t_philo *philo);
 long	get_time(void);
 long	current_time(t_data *data);
 void	ft_usleep(t_philo *philo, long duration);
+// utils
+void	print_action(t_philo *philo, char *msg);
 
 #endif 
