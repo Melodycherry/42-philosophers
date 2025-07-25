@@ -51,11 +51,12 @@ check les fonctions autorisees et faire resumer
 
 
 PB AVEC LES PRINTF 
-on doit proteger avec un mutex_print
-sinon ca fait n'imp comme maintenant 
-DONC faire une fonction qui va printer les actions avec un mutex print dedans :
-ex :
-void	print_action(t_philo *philo, char *msg)
+on doit proteger avec un mutex_print  
+sinon ca fait n'imp comme maintenant   
+DONC faire une fonction qui va printer les actions avec un mutex print dedans :  
+ex :  
+```c
+void	print_action(t_philo *philo, char *msg)  
 {
 	if (game_over(philo))
 		return ;
@@ -63,4 +64,5 @@ void	print_action(t_philo *philo, char *msg)
 	printf("%ld %d %s\n", current_time(philo->data), philo->philo_id, msg);
 	pthread_mutex_unlock(&philo->data->mutex_print);
 }
-changer ca partout. Et va reduire les lignes de code aussi donc GOOD 
+```
+changer ca partout. Et va reduire les lignes de code aussi donc GOOD   
