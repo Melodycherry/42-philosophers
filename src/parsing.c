@@ -6,12 +6,12 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:53:55 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/21 14:43:48 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:28:33 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
- 
+
 t_bool	is_valid_int(char *str)
 {
 	int	i;
@@ -27,6 +27,7 @@ t_bool	is_valid_int(char *str)
 	}
 	return (TRUE);
 }
+
 /** valid input :
  * - only digit
  * - bigger than zero pour av 1 - 2 - 3 - 4
@@ -38,18 +39,18 @@ t_bool	is_valid_input(char **av)
 	int	i;
 
 	i = 1;
-	if ((easy_atoi(av[1])) > 200) // pour les philo
+	if ((easy_atoi(av[1])) > 200)
 		return (printf("MAX number of philo is 200\n"), FALSE);
 	while (av[i])
 	{
 		if (is_valid_int(av[i]) == FALSE)
 			return (printf("Must be a number\n"), FALSE);
-		if (i == 5) // seulement pour le nombre de meal
+		if (i == 5)
 		{
 			if (easy_atoi(av[i]) < 0)
 				return (printf("Number of meal nust be 0 or more\n"), FALSE);
 		}
-		else // tt le reste doit etre positif 
+		else
 		{
 			if (easy_atoi(av[i]) <= 0)
 				return (printf("Number must be positive\n"), FALSE);

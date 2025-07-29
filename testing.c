@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:05:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/22 15:49:55 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:14:11 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,3 +165,15 @@
 // 	1 1 has taken a fork
 // 	1 1 has taken a fork
 // 	2 1 is eating
+
+
+// element de main ( fonctionnait pour verif, toujours pas monitoring )
+
+	// for (int i = 0; i < data.num_philo; i++)
+	// 	pthread_create(&data.philo[i].thread, NULL, philo_routine, &data.philo[i]);
+
+	// for (int i = 0; i < data.num_philo; i++)
+	// 	pthread_join(data.philo[i].thread, NULL);
+
+	// for (int i = 0; i < data.num_philo; i++)
+	// 	pthread_mutex_destroy(&data.forks[i]);

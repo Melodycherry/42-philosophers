@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 22:09:05 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/22 15:10:22 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:31:45 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,11 @@ long	current_time(t_data *data)
 	return (get_time() - data->start_time);
 }
 
-// void	ft_usleep(t_philo *philo, long duration)
-// {
-// 	long start;
-	
-// 	start = get_time();
-// 	while(!game_over(philo))
-// 	{
-// 		if(get_time() - start >= duration)
-// 			break;
-// 		usleep(100);
-// 	}
-// }
-
-void	ft_usleep(t_philo *philo, long duration) // tentative 2
+void	ft_usleep(long time_in_ms)
 {
-	(void)philo;
-	usleep(duration * 1000); // 100 ms -> 100000 µs
+	long	start;
+
+	start = get_time();
+	while ((get_time() - start) < time_in_ms)
+		usleep(100);
 }
