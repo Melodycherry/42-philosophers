@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:20:19 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:31:26 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:47:34 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,52 @@ void	join_threads(t_data *data)
 // 			return (NULL);
 // 		}
 // 		usleep(1000); // micro sommeil pour la surveillance
+// 	}
+// }
+
+// void	*monitoring(void *arg) // tentative 2
+// {
+// 	t_data *data = (t_data *)arg;
+// 	int i;
+// 	int full_count;
+// 	long now;
+// 	long last_meal;
+
+// 	while (1)
+// 	{
+// 		i = 0;
+// 		full_count = 0;
+// 		while (i < data->num_philo)
+// 		{
+// 			pthread_mutex_lock(&data->mutex_state);
+// 			last_meal = data->philo[i].last_meal;
+// 			pthread_mutex_unlock(&data->mutex_state);
+
+// 			now = get_time();
+// 			if ((now - last_meal) > data->time_to_die)
+// 			{
+// 				pthread_mutex_lock(&data->mutex_state);
+// 				data->is_dead = 1;
+// 				pthread_mutex_unlock(&data->mutex_state);
+// 				print_action(&data->philo[i], " died");
+// 				return (NULL);
+// 			}
+
+// 			pthread_mutex_lock(&data->mutex_state);
+// 			if (data->repetition > 0 && data->philo[i].meal_num >= data->repetition)
+// 				full_count++;
+// 			pthread_mutex_unlock(&data->mutex_state);
+
+// 			i++;
+// 		}
+// 		if (data->repetition > 0 && full_count == data->num_philo)
+// 		{
+// 			pthread_mutex_lock(&data->mutex_state);
+// 			data->are_full = 1;
+// 			pthread_mutex_unlock(&data->mutex_state);
+// 			return (NULL);
+// 		}
+// 		usleep(1000);
 // 	}
 // }
 

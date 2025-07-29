@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:27:49 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:47:53 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(int ac, char **av) 
 {
 	t_data data;
+	//pthread_t monitor;
 	
 	// verif 
 	if (ac < 5 || ac > 6)
@@ -33,12 +34,12 @@ int main(int ac, char **av)
 	// philo start eating and doing stuff :
 	if (create_thread(&data) != 0)
 	{
-		// free data philo
-		// free data forks
+		free(data.forks);
+		free(data.philo);
 		return (1);
 	}
 	
-	// creer monitoring
+	// // creer monitoring
 	// if (pthread_create(&monitor, NULL, &monitoring, &data)!= 0)
 	// {
 	// 	join_threads(&data); // car thread lance precedemnent, deja en train de tourner 
@@ -46,7 +47,7 @@ int main(int ac, char **av)
 	// 	// free data forks
 	// 	return (1);
 	// }
-	//pthread_join(monitor, NULL);
+	// pthread_join(monitor, NULL);
 	
 	join_threads(&data);
 
