@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:47:53 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/03 15:26:31 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,4 @@ int main(int ac, char **av)
 	free(data.philo);
 	return (0);
 }
+

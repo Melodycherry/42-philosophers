@@ -66,3 +66,14 @@ void	print_action(t_philo *philo, char *msg)
 }
 ```
 changer ca partout. Et va reduire les lignes de code aussi donc GOOD   
+
+
+MONITOR OCEANO
+- if no meal return 0
+- if only one philo, faire smth specific
+- create all thread all philo
+- create monito thread for death
+- synchronize beggining of sim 
+	pthread create + philo start runnin
+	every philo start simultaeously
+- join everyone

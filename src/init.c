@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:48:33 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/03 14:26:07 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,14 @@ void	init_philos(t_data *data)
 	}
 }
 
-void	fill_struct(t_data *data, int ac, char **av)
+int	fill_struct(t_data *data, int ac, char **av)
 {
 	data->num_philo = easy_atoi(av[1]);
+	// if (data->num_philo == 1) // segfault ici 
+	// {
+	// 	printf("%ld 1 died\n", get_time());
+	// 	return (1);
+	// }
 	data->time_to_die = easy_atoi(av[2]);
 	data->time_to_eat = easy_atoi(av[3]);
 	data->time_to_sleep = easy_atoi(av[4]);
@@ -54,8 +59,9 @@ void	fill_struct(t_data *data, int ac, char **av)
 	if (!data->philo)
 	{
 		printf("Malloc erreur");
-		return ;// check si exit ou free ou autre
+		return (1) ;// check si exit ou free ou autre
 	}
+	return (0);
 }
 
 void	init_forks(t_data *data) // tentative 2

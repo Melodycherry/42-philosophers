@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:27:25 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/03 14:24:17 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_all(t_data *data, int ac, char **av);
 void	init_data(t_data *data );
 void	init_philos(t_data *data);
 void	init_forks(t_data *data);
-void	fill_struct(t_data *data, int ac, char **av);
+int		fill_struct(t_data *data, int ac, char **av);
 // routine
 void	*philo_routine(void *arg);
 void	eating(t_philo *philo);

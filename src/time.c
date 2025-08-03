@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 22:09:05 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:31:45 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/03 13:41:11 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ long	get_time(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	//printf("get_time() called, returns: %ld\n", tv_sec * 1000 + tv_usec / 1000); // printf debug
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 

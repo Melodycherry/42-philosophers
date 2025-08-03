@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 17:27:58 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/03 13:46:01 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void *philo_routine(void *arg)
 		// A RAJOUTER PLUS TARD QD LE MONITOR SERA BACK : 
 		//if (philo->data->repetition > 0 && philo->meal_num >= philo->data->repetition) // si un philo a deja assez mange il sort 
 		// 	break;
-		// eating(philo);
 		eating(philo);
 		sleeping(philo);
 		thinking(philo);
