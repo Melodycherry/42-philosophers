@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 14:37:06 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:29:13 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ void	init_data(t_data *data )
 	pthread_mutex_init(&data->mutex_print, NULL);
 }
 
+int	fill_struct(t_data *data, int ac, char **av)
+{
+	data->num_philo = easy_atoi(av[1]);
+	data->time_to_die = easy_atoi(av[2]);
+	data->time_to_eat = easy_atoi(av[3]);
+	data->time_to_sleep = easy_atoi(av[4]);
+	if (ac == 6)
+		data->repetition = easy_atoi(av[5]);
+	data->philo = malloc(sizeof(t_philo) * data->num_philo);
+	if (!data->philo)
+		return (printf("Malloc error"), 1);
+	return (0);
+}
+
 void	init_philos(t_data *data)
 {
 	int	i;
@@ -45,24 +59,7 @@ void	init_philos(t_data *data)
 	}
 }
 
-int	fill_struct(t_data *data, int ac, char **av)
-{
-	data->num_philo = easy_atoi(av[1]);
-	data->time_to_die = easy_atoi(av[2]);
-	data->time_to_eat = easy_atoi(av[3]);
-	data->time_to_sleep = easy_atoi(av[4]);
-	if (ac == 6)
-		data->repetition = easy_atoi(av[5]);
-	data->philo = malloc(sizeof(t_philo) * data->num_philo);
-	if (!data->philo)
-	{
-		printf("Malloc erreur");
-		return (1) ;// check si exit ou free ou autre
-	}
-	return (0);
-}
-
-void	init_forks(t_data *data) // tentative 2
+void	init_forks(t_data *data)
 {
 	int	i;
 
@@ -78,12 +75,21 @@ void	init_forks(t_data *data) // tentative 2
 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
 		{
 			printf("Erreur init mutex fork %d\n", i);
-			// destroy de ceux déjà créés a faire maybe
+			while (--i >= 0)
+				pthread_mutex_destroy(&data->forks[i]);
+			free(data->forks);
+			data->forks = NULL;
 			return ;
 		}
 		i++;
 	}
-	//Attribution des fourchettes à chaque philosophe
+	take_forks(data);
+}
+
+void	take_forks(t_data *data)
+{
+	int	i;
+
 	i = 0;
 	while (i < data->num_philo)
 	{
@@ -99,12 +105,4 @@ void	init_forks(t_data *data) // tentative 2
 		}
 		i++;
 	}
-}
-
-void	init_all(t_data *data, int ac, char **av)
-{
-	init_data(data);
-	fill_struct(data, ac, av);
-	init_forks(data);
-	init_philos(data);
 }

@@ -6,19 +6,13 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 22:09:05 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/03 13:41:11 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:05:03 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/**
- * @brief Get the time object
- * tv.sec = secondes
- * tv.usec = microseconde
- * @return long 
- */
-long	get_time(void)
+long	get_time(void) // changer en long long 
 {
 	struct timeval	tv;
 
@@ -26,7 +20,7 @@ long	get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-long	current_time(t_data *data)
+long	current_time(t_data *data) // la 
 {
 	if (!data || data->start_time == 0)
 		return (0);

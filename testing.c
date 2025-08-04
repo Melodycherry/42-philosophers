@@ -6,11 +6,24 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:05:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 14:33:15 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:12:09 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+// TESTS DE LA CORRECTION 
+// 1 800 200 200 ( SHOULD DIE )
+// 5 800 200 200 ( meurt PAS )
+// 5 800 200 200 7 ( stop apres 7 fois chacun )
+// 4 410 200 200 ( meurt PAS)
+// 4 310 200 100 ( one philo die)
+// test with 2 philo, death doit pas etre delay de plus de 10 ms
+
+
+// leaks --atExit -- ./philo 5 400 200 200  
+
+
 
 //#define MAX_PHILOS 200
 
