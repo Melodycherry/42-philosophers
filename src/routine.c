@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 14:19:25 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:50:35 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ void *philo_routine(void *arg)
 		usleep(200);
 	while (!philo->data->is_dead)
 	{
-		// A RAJOUTER PLUS TARD QD LE MONITOR SERA BACK : 
-		//if (philo->data->repetition > 0 && philo->meal_num >= philo->data->repetition) // si un philo a deja assez mange il sort 
-		// 	break;
+		if (philo->data->repetition > 0 && philo->meal_num >= philo->data->repetition) // si un philo a deja assez mange il sort 
+			break;
 		eating(philo);
 		sleeping(philo);
 		thinking(philo);
@@ -31,7 +30,7 @@ void *philo_routine(void *arg)
 	return (NULL);
 }
 
-void	eating(t_philo *philo) // ajouter meal num somewhere 
+void	eating(t_philo *philo)
 {
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
@@ -53,6 +52,7 @@ void	eating(t_philo *philo) // ajouter meal num somewhere
 	print_action(philo, "is eating");
 	philo->last_meal = get_time();
 	ft_usleep(philo->data->time_to_eat);
+	philo->meal_num++;
 	pthread_mutex_unlock(first);
 	pthread_mutex_unlock(second);
 }

@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:53:55 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:28:33 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:36:29 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_bool	is_valid_input(char **av)
 		if (i == 5)
 		{
 			if (easy_atoi(av[i]) < 0)
-				return (printf("Number of meal nust be 0 or more\n"), FALSE);
+				return (printf("Number of meal must be 0 or more\n"), FALSE);
 		}
 		else
 		{
