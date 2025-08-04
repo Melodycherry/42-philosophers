@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 14:50:35 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:38:40 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void *philo_routine(void *arg)
 		usleep(200);
 	while (!philo->data->is_dead)
 	{
+		eating(philo);
 		if (philo->data->repetition > 0 && philo->meal_num >= philo->data->repetition) // si un philo a deja assez mange il sort 
 			break;
-		eating(philo);
 		sleeping(philo);
 		thinking(philo);
 	}
@@ -49,7 +49,7 @@ void	eating(t_philo *philo)
 	print_action(philo, "has taken a fork");
 	pthread_mutex_lock(second);
 	print_action(philo, "has taken another fork"); // a changer 
-	print_action(philo, "is eating");
+	print_action(philo, "is eating 🍝");
 	philo->last_meal = get_time();
 	ft_usleep(philo->data->time_to_eat);
 	philo->meal_num++;
