@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/03 14:24:17 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:05:04 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ typedef enum e_bool
 t_bool	is_valid_int(char *str);
 t_bool	is_valid_input(char **av);
 int		easy_atoi(const char *str);
+int		first_check(int ac, char **av);
 // init
 void	init_all(t_data *data, int ac, char **av);
 void	init_data(t_data *data );
 void	init_philos(t_data *data);
 void	init_forks(t_data *data);
 int		fill_struct(t_data *data, int ac, char **av);
+void	take_forks(t_data *data);
 // routine
 void	*philo_routine(void *arg);
 void	eating(t_philo *philo);
@@ -56,5 +58,7 @@ long	current_time(t_data *data);
 void	ft_usleep(long time_in_ms);
 // utils
 void	print_action(t_philo *philo, char *msg);
+int		one_philo_case(t_data *data);
+void	destroy_and_free(t_data *data);
 
 #endif 
