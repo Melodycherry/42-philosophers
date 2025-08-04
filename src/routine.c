@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/03 13:46:01 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:19:25 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void *philo_routine(void *arg)
 	return (NULL);
 }
 
-void	eating(t_philo *philo)
+void	eating(t_philo *philo) // ajouter meal num somewhere 
 {
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;

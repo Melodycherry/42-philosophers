@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/03 15:26:31 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:34:03 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ int main(int ac, char **av)
 	// init 
 	init_all(&data, ac, av);
 	data.start_time = get_time();
+
+	// si juste 1 philo ( faire fonction separee plus tard maybe )
+	if (data.num_philo == 1)
+	{
+		printf("%ld 1 died\n", get_time() - data.start_time);
+		free(data.forks);
+		free(data.philo);
+		return (0);
+	}
 	
 	// philo start eating and doing stuff :
 	if (create_thread(&data) != 0)

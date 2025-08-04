@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:05:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/07/29 16:14:11 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:33:15 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,3 +177,18 @@
 
 	// for (int i = 0; i < data.num_philo; i++)
 	// 	pthread_mutex_destroy(&data.forks[i]);
+
+
+// POUR ONLY ONE PHILO
+// int	one_philo_case(t_data *data)
+// {
+// 	printf("%ld 1 has taken a fork\n", get_time() - data->start_time);
+// 	usleep(data->time_to_die * 1000);
+// 	printf("%ld 1 died\n", get_time() - data->start_time);
+// 	free(data->forks);
+// 	free(data->philo);
+// 	return (1);
+// }
+// et dans le main() :
+// 	if (data.num_philo == 1)
+// 		return (one_philo_case(&data));

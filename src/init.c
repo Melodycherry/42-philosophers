@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/03 14:26:07 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:29:01 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_data(t_data *data )
 	data->philo = NULL;
 	data->is_dead = 0;
 	data->are_full = 0;
+	data->forks = NULL;
 	pthread_mutex_init(&data->mutex_state, NULL);
 	pthread_mutex_init(&data->mutex_print, NULL);
 }
@@ -38,6 +39,8 @@ void	init_philos(t_data *data)
 		data->philo[i].last_meal = data->start_time;
 		data->philo[i].thread = 0;
 		data->philo[i].data = data;
+		data->philo[i].left_fork = &data->forks[i];
+		data->philo[i].right_fork = &data->forks[(i + 1) % data->num_philo];
 		i++;
 	}
 }
