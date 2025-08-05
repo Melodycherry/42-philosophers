@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 17:05:04 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:32:20 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		fill_struct(t_data *data, int ac, char **av);
 void	take_forks(t_data *data);
 // routine
 void	*philo_routine(void *arg);
+void	odd_or_even_philo(t_philo *philo,
+			pthread_mutex_t **first, pthread_mutex_t **second);
 void	eating(t_philo *philo);
 void	sleeping(t_philo *philo);
 void	thinking(t_philo *philo);

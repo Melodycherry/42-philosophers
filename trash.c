@@ -279,3 +279,39 @@
 // 	pthread_mutex_unlock(&philo->data->mutex_state);
 // 	return (end);
 // }
+
+// ROUTINE V2 AVEC TOUS LES MUTEX DE LA TERRE
+// a mettre seulement si ca marche pas 
+// void	*philo_routine(void *arg)
+// {
+// 	t_philo	*philo = (t_philo *)arg;
+
+// 	if (philo->philo_id % 2 == 0)
+// 		usleep(1000); // Petit décalage pour éviter conflits
+
+// 	while (1)
+// 	{
+// 		pthread_mutex_lock(&philo->data->mutex_state);
+// 		if (philo->data->is_dead)
+// 		{
+// 			pthread_mutex_unlock(&philo->data->mutex_state);
+// 			break ;
+// 		}
+// 		pthread_mutex_unlock(&philo->data->mutex_state);
+
+// 		eating(philo);
+
+// 		pthread_mutex_lock(&philo->data->mutex_state);
+// 		if (philo->data->repetition > 0
+// 			&& philo->meal_num >= philo->data->repetition)
+// 		{
+// 			pthread_mutex_unlock(&philo->data->mutex_state);
+// 			break ;
+// 		}
+// 		pthread_mutex_unlock(&philo->data->mutex_state);
+
+// 		sleeping(philo);
+// 		thinking(philo);
+// 	}
+// 	return (NULL);
+// }
