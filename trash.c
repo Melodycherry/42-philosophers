@@ -315,3 +315,39 @@
 // 	}
 // 	return (NULL);
 // }
+
+// void	*monitoring(void *arg) // ok fonctionne mais utilise version refacto 
+// en 3 fonction avec plus de securite 
+// {
+// 	t_data		*data;
+// 	int			i;
+// 	int			full_count;
+// 	long long	last_meal;
+
+// 	data = (t_data *)arg;
+// 	while (1)
+// 	{
+// 		i = 0;
+// 		full_count = 0;
+// 		while (i < data->num_philo)
+// 		{
+// 			pthread_mutex_lock(&data->mutex_state);
+// 			last_meal = data->philo[i].last_meal;
+// 			if ((get_time() - last_meal) > data->time_to_die)
+// 			{
+// 				print_action(&data->philo[i], "died");
+// 				data->is_dead = 1;
+// 				pthread_mutex_unlock(&data->mutex_state);
+// 				return (NULL);
+// 			}
+// 			if (data->repetition > 0
+// 				&& data->philo[i].meal_num >= data->repetition)
+// 				full_count++;
+// 			pthread_mutex_unlock(&data->mutex_state);
+// 			i++;
+// 		}
+// 		if (data->repetition > 0 && full_count == data->num_philo)
+// 			return (NULL);
+// 		usleep(500);
+// 	}
+// }

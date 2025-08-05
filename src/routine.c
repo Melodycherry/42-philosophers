@@ -6,61 +6,30 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/05 15:38:35 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:06:02 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *arg) // test avec mutex everywhere
+void	*philo_routine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	if (philo->philo_id % 2 == 0)
 		usleep(1000);
-	while (1)
+	while (!philo->data->is_dead)
 	{
-		pthread_mutex_lock(&philo->data->mutex_state);
-		if (philo->data->is_dead)
-		{
-			pthread_mutex_unlock(&philo->data->mutex_state);
-			break ;
-		}
-		pthread_mutex_unlock(&philo->data->mutex_state);
 		eating(philo);
-		pthread_mutex_lock(&philo->data->mutex_state);
 		if (philo->data->repetition > 0
 			&& philo->meal_num >= philo->data->repetition)
-		{
-			pthread_mutex_unlock(&philo->data->mutex_state);
 			break ;
-		}
-		pthread_mutex_unlock(&philo->data->mutex_state);
 		sleeping(philo);
 		thinking(philo);
 	}
 	return (NULL);
 }
-
-// void	*philo_routine(void *arg)
-// {
-// 	t_philo	*philo;
-
-// 	philo = (t_philo *)arg;
-// 	if (philo->philo_id % 2 == 0)
-// 		usleep(1000);
-// 	while (!philo->data->is_dead)
-// 	{
-// 		eating(philo);
-// 		if (philo->data->repetition > 0
-// 			&& philo->meal_num >= philo->data->repetition)
-// 			break ;
-// 		sleeping(philo);
-// 		thinking(philo);
-// 	}
-// 	return (NULL);
-// }
 
 void	eating(t_philo *philo)
 {

@@ -20,6 +20,7 @@ vpath %.c \
 
 # Sources and object files
 SRC = main.c \
+	monitoring.c \
 	parsing.c \
 	init.c \
 	routine.c \

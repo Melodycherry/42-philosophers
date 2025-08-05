@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/05 15:06:47 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:56:39 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	init_data(t_data *data )
 
 int	fill_struct(t_data *data, int ac, char **av)
 {
-	data->num_philo = easy_atoi(av[1]);
-	data->time_to_die = easy_atoi(av[2]);
-	data->time_to_eat = easy_atoi(av[3]);
-	data->time_to_sleep = easy_atoi(av[4]);
+	data->num_philo = easy_atol(av[1]);
+	data->time_to_die = easy_atol(av[2]);
+	data->time_to_eat = easy_atol(av[3]);
+	data->time_to_sleep = easy_atol(av[4]);
 	if (ac == 6)
-		data->repetition = easy_atoi(av[5]);
+		data->repetition = easy_atol(av[5]);
 	data->philo = malloc(sizeof(t_philo) * data->num_philo);
 	if (!data->philo)
 		return (printf("Malloc error"), 1);

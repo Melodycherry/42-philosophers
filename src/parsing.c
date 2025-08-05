@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:53:55 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 18:05:52 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:33:24 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_bool	is_valid_input(char **av)
 	int	i;
 
 	i = 1;
-	if ((easy_atoi(av[1])) > 200)
+	if ((easy_atol(av[1])) > 200)
 		return (printf("MAX number of philo is 200\n"), FALSE);
 	while (av[i])
 	{
@@ -41,41 +41,17 @@ t_bool	is_valid_input(char **av)
 			return (printf("Must be a number\n"), FALSE);
 		if (i == 5)
 		{
-			if (easy_atoi(av[i]) < 0)
+			if (easy_atol(av[i]) < 0)
 				return (printf("Number of meal must be 0 or more\n"), FALSE);
 		}
 		else
 		{
-			if (easy_atoi(av[i]) <= 0)
+			if (easy_atol(av[i]) <= 0)
 				return (printf("Number must be positive\n"), FALSE);
 		}
 		i++;
 	}
 	return (TRUE);
-}
-
-int	easy_atoi(const char *str)
-{
-	int	i;
-	int	result;
-	int	signe;
-
-	i = 0;
-	signe = 1;
-	result = 0;
-	if (str[i] == '-')
-	{
-		signe = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (signe * result);
 }
 
 int	first_check(int ac, char **av)
