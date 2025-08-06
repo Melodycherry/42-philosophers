@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 16:27:59 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/05 16:41:11 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:27:18 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,36 @@ int	all_philos_ate_enough(t_data *data)
 	return (1);
 }
 
+int	philo_should_die(t_philo *philo, t_data *data)
+{
+	long long	now;
+	long long	last_meal;
+
+	if (data->repetition > 0 && philo->meal_num >= data->repetition)
+		return (0);
+	now = get_time();
+	last_meal = philo->last_meal;
+	if ((now - last_meal) > data->time_to_die)
+		return (1);
+	return (0);
+}
+
 int	check_philo_death(t_data *data)
 {
-	int			i;
-	long long	last_meal;
+	int	i;
 
 	i = 0;
 	while (i < data->num_philo)
 	{
 		pthread_mutex_lock(&data->mutex_state);
-		if (data->repetition > 0
-			&& data->philo[i].meal_num >= data->repetition)
-		{
-			pthread_mutex_unlock(&data->mutex_state);
-			i++;
-			continue ;
-		}
-		last_meal = data->philo[i].last_meal;
-		pthread_mutex_unlock(&data->mutex_state);
-		if ((get_time() - last_meal) > data->time_to_die)
+		if (philo_should_die(&data->philo[i], data))
 		{
 			print_action(&data->philo[i], "died");
-			pthread_mutex_lock(&data->mutex_state);
 			data->is_dead = 1;
 			pthread_mutex_unlock(&data->mutex_state);
 			return (1);
 		}
+		pthread_mutex_unlock(&data->mutex_state);
 		i++;
 	}
 	return (0);

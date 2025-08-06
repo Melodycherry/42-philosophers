@@ -351,3 +351,35 @@
 // 		usleep(500);
 // 	}
 // }
+
+
+// int	check_philo_death(t_data *data) // before refacto, ca fonctionne 
+// {
+// 	int			i;
+// 	long long	last_meal;
+
+// 	i = 0;
+// 	while (i < data->num_philo)
+// 	{
+// 		pthread_mutex_lock(&data->mutex_state);
+// 		if (data->repetition > 0
+// 			&& data->philo[i].meal_num >= data->repetition)
+// 		{
+// 			pthread_mutex_unlock(&data->mutex_state);
+// 			i++;
+// 			continue ;
+// 		}
+// 		last_meal = data->philo[i].last_meal;
+// 		pthread_mutex_unlock(&data->mutex_state);
+// 		if ((get_time() - last_meal) > data->time_to_die)
+// 		{
+// 			print_action(&data->philo[i], "died");
+// 			pthread_mutex_lock(&data->mutex_state);
+// 			data->is_dead = 1;
+// 			pthread_mutex_unlock(&data->mutex_state);
+// 			return (1);
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }

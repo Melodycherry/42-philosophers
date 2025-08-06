@@ -6,19 +6,11 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:32:38 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 17:36:49 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:22:10 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	init_all(t_data *data, int ac, char **av)
-{
-	init_data(data);
-	fill_struct(data, ac, av);
-	init_forks(data);
-	init_philos(data);
-}
 
 int	main(int ac, char **av)
 {
