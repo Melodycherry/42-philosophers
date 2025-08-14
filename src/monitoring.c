@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 16:27:59 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/06 17:27:18 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/14 16:59:46 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*monitoring(void *arg)
 			pthread_mutex_unlock(&data->mutex_state);
 			return (NULL);
 		}
-		usleep(500);
+		usleep(1000);
 	}
 }
 
