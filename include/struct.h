@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:59:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/05 15:48:44 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:17:27 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	int						repetition;
 	long long				start_time;
 	int						is_dead;
+	int						are_full;
 	t_philo					*philo;
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			mutex_state;

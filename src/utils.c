@@ -6,16 +6,18 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:45:03 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/05 16:36:01 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/13 17:37:07 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_action(t_philo *philo, char *msg)
-{
+void	print_action(t_philo *philo, char *msg) // modif de la fonction 
+{	
+	if (game_over(philo))
+		return;
 	pthread_mutex_lock(&philo->data->mutex_print);
-	if (!philo->data->is_dead)
+	if (!game_over(philo))
 		printf("%lld %d %s\n", current_time(philo->data), philo->philo_id, msg);
 	pthread_mutex_unlock(&philo->data->mutex_print);
 }
@@ -59,4 +61,14 @@ long long	easy_atol(const char *str)
 		i++;
 	}
 	return (signe * result);
+}
+// test 
+
+int game_over(t_philo *philo) // tentative de truc 
+{
+    int over;
+    pthread_mutex_lock(&philo->data->mutex_state);
+    over = (philo->data->is_dead || philo->data->are_full);
+    pthread_mutex_unlock(&philo->data->mutex_state);
+    return over;
 }

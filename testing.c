@@ -6,11 +6,59 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:05:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/04 18:12:09 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/14 16:43:38 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int get_is_dead(t_data *data)
+{
+	int dead;
+	pthread_mutex_lock(&data->mutex_state);
+	dead = data->is_dead;
+	pthread_mutex_unlock(&data->mutex_state);
+	return (dead);
+}
+
+void set_is_dead(t_data *data)
+{
+	pthread_mutex_lock(&data->mutex_state);
+	data->is_dead = 1;
+	pthread_mutex_unlock(&data->mutex_state);
+}
+
+long long get_last_meal(t_philo *philo)
+{
+	long long meal;
+	pthread_mutex_lock(&philo->data->mutex_state);
+	meal = philo->last_meal;
+	pthread_mutex_unlock(&philo->data->mutex_state);
+	return (meal);
+}
+
+void set_last_meal(t_philo *philo, long long time)
+{
+	pthread_mutex_lock(&philo->data->mutex_state);
+	philo->last_meal = time;
+	pthread_mutex_unlock(&philo->data->mutex_state);
+}
+
+int get_meal_num(t_philo *philo)
+{
+	int meal_num;
+	pthread_mutex_lock(&philo->data->mutex_state);
+	meal_num = philo->meal_num;
+	pthread_mutex_unlock(&philo->data->mutex_state);
+	return (meal_num);
+}
+void increse_meal_num(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->mutex_state);
+	philo->meal_num++;
+	pthread_mutex_unlock(&philo->data->mutex_state);
+}
+
 
 // TESTS DE LA CORRECTION 
 // 1 800 200 200 ( SHOULD DIE )

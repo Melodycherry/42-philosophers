@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/06 17:32:27 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/14 16:38:39 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,21 @@ void			join_threads(t_data *data);
 // Time
 long long		get_time(void);
 long long		current_time(t_data *data);
-void			ft_usleep(long time_in_ms);
+//void			ft_usleep(long time_in_ms);
+void    		ft_usleep(t_philo *philo, long long duration_ms); 
 // utils
 void			print_action(t_philo *philo, char *msg);
 int				one_philo_case(t_data *data);
 void			destroy_and_free(t_data *data);
 long long		easy_atol(const char *str);
+// test
+int get_is_dead(t_data *data);
+void set_is_dead(t_data *data);
+long long get_last_meal(t_philo *philo);
+void set_last_meal(t_philo *philo, long long time);
+int get_meal_num(t_philo *philo);
+void increse_meal_num(t_philo *philo);
+int 		game_over(t_philo *philo);
+//static int everyone_full(t_data *d);
 
 #endif 
