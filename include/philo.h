@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/06 17:32:27 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:08:25 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <stdbool.h>
 
 # include "struct.h"
 
@@ -39,7 +40,6 @@ int				fill_struct(t_data *data, int ac, char **av);
 // monitoring
 void			*monitoring(void *arg);
 int				all_philos_ate_enough(t_data *data);
-int				philo_should_die(t_philo *philo, t_data *data);
 int				check_philo_death(t_data *data);
 // Parsing
 t_bool			is_valid_int(char *str);
@@ -54,7 +54,7 @@ void			sleeping(t_philo *philo);
 void			thinking(t_philo *philo);
 // thread
 int				create_thread(t_data *data);
-void			join_threads(t_data *data);
+int				join_threads(t_data *data);
 // Time
 long long		get_time(void);
 long long		current_time(t_data *data);
@@ -62,7 +62,7 @@ void			ft_usleep(long time_in_ms);
 // utils
 void			print_action(t_philo *philo, char *msg);
 int				one_philo_case(t_data *data);
-void			destroy_and_free(t_data *data);
+int				destroy_and_free(t_data *data);
 long long		easy_atol(const char *str);
 
 #endif 

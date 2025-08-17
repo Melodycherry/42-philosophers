@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:07:34 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/06 17:22:27 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:09:03 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	init_data(t_data *data )
 	data->time_to_eat = 0;
 	data->time_to_sleep = 0;
 	data->repetition = 0;
+	data->end = FALSE;
 	data->philo = NULL;
-	data->is_dead = 0;
 	data->forks = NULL;
 	pthread_mutex_init(&data->mutex_state, NULL);
 	pthread_mutex_init(&data->mutex_print, NULL);
@@ -50,6 +50,7 @@ void	init_philos(t_data *data)
 		data->philo[i].philo_id = i + 1;
 		data->philo[i].meal_num = 0;
 		data->philo[i].last_meal = data->start_time;
+		data->philo[i].full = FALSE;
 		data->philo[i].thread = 0;
 		data->philo[i].data = data;
 		data->philo[i].left_fork = &data->forks[i];

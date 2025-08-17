@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:59:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/05 15:48:44 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/17 15:55:14 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_philo
 	int					philo_id;
 	int					meal_num;
 	long long			last_meal;
+	bool				full;
 	pthread_t			thread;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
@@ -35,8 +36,9 @@ typedef struct s_data
 	long long				time_to_eat;
 	long long				time_to_sleep;
 	int						repetition;
+	//long					start_sim;
 	long long				start_time;
-	int						is_dead;
+	bool					end;
 	t_philo					*philo;
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			mutex_state;
