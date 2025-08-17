@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:45:03 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 16:12:05 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:16:20 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	one_philo_case(t_data *data)
 	return (1);
 }
 
-int destroy_and_free(t_data *data)
+int	destroy_and_free(t_data *data)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	while ( i < data->num_philo)
+	while (i < data->num_philo)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 16:11:21 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:19:00 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	// while smth 
 	if (philo->philo_id % 2 == 0)
 		usleep(1000);
 	while (!philo->data->end)
@@ -33,29 +32,23 @@ void	eating(t_philo *philo)
 {
 	pthread_mutex_t	*first;
 	pthread_mutex_t	*second;
-	long now;
+	long			now;
 
 	odd_or_even_philo(philo, &first, &second);
-	
-	// take forks
 	pthread_mutex_lock(first);
 	print_action(philo, "has taken a fork");
 	pthread_mutex_lock(second);
 	print_action(philo, "has taken another fork");
-	
 	pthread_mutex_lock(&philo->data->mutex_state);
 	now = get_time();
 	philo->last_meal = now;
 	philo->meal_num++;
 	if (philo->data->repetition > 0
-			&& philo->meal_num >= philo->data->repetition)
-			philo->full = TRUE ;
+		&& philo->meal_num >= philo->data->repetition)
+		philo->full = TRUE ;
 	pthread_mutex_unlock(&philo->data->mutex_state);
-	
 	print_action(philo, "is eating 🍝");
 	ft_usleep(philo->data->time_to_eat);
-	
-	// release les fork
 	pthread_mutex_unlock(first);
 	pthread_mutex_unlock(second);
 }

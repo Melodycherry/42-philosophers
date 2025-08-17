@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 16:27:59 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 16:10:39 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:15:19 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	*monitoring(void *arg)
 
 int	all_philos_ate_enough(t_data *data)
 {
-	int	i;
-	int full_count;
+	int		i;
+	int		full_count;
 	t_philo	*philo;
 
 	if (data->repetition <= 0)
@@ -59,7 +59,7 @@ int	all_philos_ate_enough(t_data *data)
 
 int	check_philo_death(t_data *data)
 {
-	int	i;
+	int		i;
 	long	now;
 	t_philo	*philo;
 
