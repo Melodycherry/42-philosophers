@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:59:39 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 15:55:14 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:10:52 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_data
 	long long				time_to_eat;
 	long long				time_to_sleep;
 	int						repetition;
-	//long					start_sim;
 	long long				start_time;
 	bool					end;
 	t_philo					*philo;

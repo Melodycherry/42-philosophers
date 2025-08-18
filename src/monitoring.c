@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 16:27:59 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/18 14:33:20 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:10:25 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,11 @@ int	check_philo_death(t_data *data)
 	}
 	return (0);
 }
+
 int	mutex_read_end(t_data *data)
 {
 	int	end;
-	
+
 	pthread_mutex_lock(&data->mutex_state);
 	end = data->end;
 	pthread_mutex_unlock(&data->mutex_state);

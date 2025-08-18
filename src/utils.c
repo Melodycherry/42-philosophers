@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:45:03 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/18 14:18:35 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:09:39 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_action(t_philo *philo, char *msg)
 {
-	int end;
-	
+	int	end;
+
 	pthread_mutex_lock(&philo->data->mutex_print);
 	pthread_mutex_lock(&philo->data->mutex_state);
 	end = philo->data->end;
