@@ -6,16 +6,16 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:20:19 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 16:17:34 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/18 14:25:32 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	create_thread(t_data *data)
+int	create_thread(t_data *data, pthread_t *monitor_thread)
 {
 	int			i;
-	pthread_t	monitor_thread;
+	//pthread_t	monitor_thread;
 	t_philo		*philo;
 
 	data->start_time = get_time();
@@ -33,9 +33,9 @@ int	create_thread(t_data *data)
 			return (0);
 		i++;
 	}
-	if (pthread_create(&monitor_thread, NULL, &monitoring, data) != 0)
+	if (pthread_create(monitor_thread, NULL, &monitoring, data) != 0)
 		return (0);
-	pthread_detach(monitor_thread);
+	//pthread_detach(monitor_thread);
 	return (1);
 }
 

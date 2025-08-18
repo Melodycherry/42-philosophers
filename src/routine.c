@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 14:19:28 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 16:19:00 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/18 14:11:36 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->philo_id % 2 == 0)
 		usleep(1000);
-	while (!philo->data->end)
+	while (!mutex_read_end(philo->data))
 	{
 		eating(philo);
 		sleeping(philo);

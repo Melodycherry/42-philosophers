@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 16:27:59 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 16:15:19 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/18 14:33:20 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@ void	*monitoring(void *arg)
 	t_data	*data;
 
 	data = (t_data *)arg;
-	while (!data->end)
+	while (!mutex_read_end(data))
 	{
 		if (check_philo_death(data))
 			return (NULL);
 		if (all_philos_ate_enough(data))
 		{
-			pthread_mutex_lock(&data->mutex_state);
-			data->end = TRUE;
-			pthread_mutex_unlock(&data->mutex_state);
+			mutex_write_end(data, TRUE);
 			return (NULL);
 		}
 		usleep(1000);
@@ -71,13 +69,29 @@ int	check_philo_death(t_data *data)
 		now = get_time();
 		if (now - philo->last_meal > data->time_to_die)
 		{
-			print_action(&data->philo[i], "died");
-			data->end = TRUE;
 			pthread_mutex_unlock(&data->mutex_state);
+			print_action(&data->philo[i], "died");
+			mutex_write_end(data, TRUE);
 			return (1);
 		}
 		pthread_mutex_unlock(&data->mutex_state);
 		i++;
 	}
 	return (0);
+}
+int	mutex_read_end(t_data *data)
+{
+	int	end;
+	
+	pthread_mutex_lock(&data->mutex_state);
+	end = data->end;
+	pthread_mutex_unlock(&data->mutex_state);
+	return (end);
+}
+
+void	mutex_write_end(t_data *data, int value)
+{
+	pthread_mutex_lock(&data->mutex_state);
+	data->end = value;
+	pthread_mutex_unlock(&data->mutex_state);
 }

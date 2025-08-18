@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 14:33:35 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/17 16:08:25 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/18 14:23:43 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int				fill_struct(t_data *data, int ac, char **av);
 void			*monitoring(void *arg);
 int				all_philos_ate_enough(t_data *data);
 int				check_philo_death(t_data *data);
+int				mutex_read_end(t_data *data);
+void			mutex_write_end(t_data *data, int value);
 // Parsing
 t_bool			is_valid_int(char *str);
 t_bool			is_valid_input(char **av);
@@ -53,7 +55,7 @@ void			odd_or_even_philo(t_philo *philo,
 void			sleeping(t_philo *philo);
 void			thinking(t_philo *philo);
 // thread
-int				create_thread(t_data *data);
+int				create_thread(t_data *data, pthread_t *monitor_thread);
 int				join_threads(t_data *data);
 // Time
 long long		get_time(void);
