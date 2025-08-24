@@ -6,7 +6,7 @@
 /*   By: mlaffita <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:45:03 by mlaffita          #+#    #+#             */
-/*   Updated: 2025/08/18 16:09:39 by mlaffita         ###   ########.fr       */
+/*   Updated: 2025/08/24 12:16:36 by mlaffita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	print_action(t_philo *philo, char *msg)
 int	one_philo_case(t_data *data)
 {
 	printf("0 1 take a fork\n");
+	ft_usleep(data->time_to_die);
 	printf("%lld 1 died\n", data->time_to_die);
 	return (1);
 }
