@@ -81,8 +81,8 @@ Chaque philosophe alterne entre **manger**, **dormir** et **penser**:
 
 ---
 
-✅ **STATUT:**  
-📅 **Date de rendu** : 22.08.2025
-📝 **Note obtenue** : 100/100 
+✅ **STATUT:**   
+📅 **Date de rendu** : 22.08.2025  
+📝 **Note obtenue** : 100/100   
 
 ---
